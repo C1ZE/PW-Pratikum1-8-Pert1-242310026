@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan-7</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box; /* Agar padding tidak merusak lebar */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .btn-save {
+            background-color: #4CAF50;
+            color: white;
+            margin-right: 10px;
+        }
+        .btn-clear {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Form Latihan-7</h2>
+        <form action="#" method="post">
+            
+            <div class="form-group">
+                <label for="npm">NPM:</label>
+                <input type="text" id="npm" name="npm" placeholder="Masukkan NPM">
+            </div>
+
+            <div class="form-group">
+                <label for="fullname">Fullname:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Masukkan Nama Lengkap">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="contoh@mail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <div class="form-group">
+                <label for="place_birth">Place Birth:</label>
+                <input type="text" id="place_birth" name="place_birth" placeholder="Tempat Lahir">
+            </div>
+
+            <div class="form-group">
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate">
+            </div>
+
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <label style="font-weight: normal;">
+                        <input type="radio" name="gender" value="Male"> Male
+                    </label>
+                    <label style="font-weight: normal;">
+                        <input type="radio" name="gender" value="Female"> Female
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="4" placeholder="Alamat Lengkap"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn-save">Save</button>
+                <button type="reset" class="btn-clear">Clear</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
