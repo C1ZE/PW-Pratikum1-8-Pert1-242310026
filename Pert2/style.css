@@ -1,0 +1,29 @@
+p {
+    color: blue;
+    text-align: center;
+}
+
+#paraf_id {
+    color: aqua;
+}
+
+.paraf_class {
+    color: green;
+    font-size: 24px;
+}
+
+div p {
+    color: orange;
+    background-color: brown;
+}
+
+.box {
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid brown; 
+    border-radius: 4px;
+    background-color: blanchedalmond;
+    color: brown;
+    font-size: larger;
+    font-weight: bold; -align: center;
+}

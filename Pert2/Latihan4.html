@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Steve Valentino Wijaya</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .portfolio-container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #0078d4, #00bcf2);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .profile-header h1 { margin: 10px 0; font-size: 2.2rem; }
+        .profile-header p { font-size: 1.1rem; opacity: 0.9; }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        h3 {
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 5px;
+            color: #0078d4;
+        }
+
+        .sidebar {
+            border-right: 1px solid #eee;
+            padding-right: 20px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #e1ecf4;
+            color: #39739d;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 3px;
+            font-size: 0.9rem;
+        }
+
+        .experience-item { margin-bottom: 20px; }
+        .experience-item h4 { margin: 5px 0; color: #444; }
+        .experience-item span { font-size: 0.85rem; color: #888; }
+
+        .back-nav {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: #0078d4;
+            font-weight: bold;
+            border: 2px solid #0078d4;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background: #0078d4;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="portfolio-container">
+    <div class="profile-header">
+        <img src="steve.jpeg" alt="Steve Valentino Wijaya">
+        <h1>Steve Valentino Wijaya</h1>
+        <p>IT Student at IBI Kesatuan | Software Developer & Network Enthusiast</p>
+    </div>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <h3>Contact</h3>
+            <p>📍 Bogor, Indonesia</p>
+            <p>📧 stevevalentinowijaya@gmail.com</p>
+            
+            <h3>Skills</h3>
+            <div class="skill-tag">Java</div>
+            <div class="skill-tag">SQL</div>
+            <div class="skill-tag">HTML/CSS</div>
+            <div class="skill-tag">Cisco Networking</div>
+            <div class="skill-tag">MikroTik</div>
+            <div class="skill-tag">Git</div>
+        </div>
+
+        <div class="content">
+            <h3>About Me</h3>
+            <p>Saya adalah mahasiswa Informatika semester 4 yang fokus pada pengembangan sistem perangkat lunak dan infrastruktur jaringan. Memiliki pengalaman dalam membangun simulasi sistem pegadaian menggunakan Java.</p>
+            
+            <h3>Recent Projects</h3>
+            <div class="experience-item">
+                <h4>Simulasi Sistem Pegadaian</h4>
+                <span>Java, OOP | Jan 2026</span>
+                <p>Membangun driver class MainProgram.java untuk menjalankan skenario transaksi barang secara otomatis.</p>
+            </div>
+            
+            <div class="experience-item">
+                <h4>Network Configuration</h4>
+                <span>MikroTik & Winbox | April 2026</span>
+                <p>Melakukan instalasi dan konfigurasi router pada Virtual Machine untuk simulasi jaringan lokal.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-nav">
+        <a href="Latihan3.html" class="btn-back"> Kembali ke Beranda</a>
+    </div>
+</div>
+
+</body>
+</html>
