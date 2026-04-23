@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Pembelajaran 3.3 No 1</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .form-container { border: 1px solid #000; padding: 20px; width: 400px; }
+        .row { margin-bottom: 10px; }
+        label { display: inline-block; width: 130px; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Formulir Data Mahasiswa</h2>
+    <form id="formData" onsubmit="tampilkanData(event)">
+        <div class="row"><label>NIM :</label> <input type="text" id="nim" required></div>
+        <div class="row"><label>NAMA :</label> <input type="text" id="nama" required></div>
+        <div class="row">
+            <label>JENIS KELAMIN :</label>
+            <input type="radio" name="jk" value="Laki-laki" required> Laki-laki
+            <input type="radio" name="jk" value="Perempuan"> Perempuan
+        </div>
+        <div class="row">
+            <label>AGAMA :</label>
+            <select id="agama">
+                <option value="Islam">Islam</option>
+                <option value="Kristen">Kristen</option>
+                <option value="Katolik">Katolik</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Budha">Budha</option>
+            </select>
+        </div>
+        <div class="row">
+            <label>STATUS :</label>
+            <select id="status">
+                <option value="Mahasiswa">Mahasiswa</option>
+                <option value="Bekerja">Bekerja</option>
+            </select>
+        </div>
+        <div class="row"><label>JURUSAN :</label> <input type="text" id="jurusan"></div>
+        <div class="row"><label>KOMENTAR :</label> <textarea id="komentar"></textarea></div>
+        
+        <button type="submit">KIRIM</button>
+        <button type="reset">ULANG</button>
+    </form>
+
+    <hr>
+    <h3>Output Data:</h3>
+    <div id="outputArea"></div>
+</div>
+
+<script>
+    function tampilkanData(event) {
+        event.preventDefault();
+        const area = document.getElementById('outputArea');
+        
+        const data = {
+            NIM: document.getElementById('nim').value,
+            NAMA: document.getElementById('nama').value,
+            JENIS_KELAMIN: document.querySelector('input[name="jk"]:checked').value,
+            AGAMA: document.getElementById('agama').value,
+            STATUS: document.getElementById('status').value,
+            JURUSAN: document.getElementById('jurusan').value,
+            KOMENTAR: document.getElementById('komentar').value
+        };
+
+        area.innerHTML = `
+            <p>NIM : ${data.NIM}</p>
+            <p>NAMA : ${data.NAMA}</p>
+            <p>JENIS KELAMIN : ${data.JENIS_KELAMIN}</p>
+            <p>AGAMA : ${data.AGAMA}</p>
+            <p>STATUS : ${data.STATUS}</p>
+            <p>JURUSAN : ${data.JURUSAN}</p>
+            <p>KOMENTAR : ${data.KOMENTAR}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pemesanan Tiket Travel IBIK Abadi</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .container { border: 1px solid #000; padding: 20px; width: 450px; }
+        .row { margin-bottom: 10px; }
+        label { display: inline-block; width: 150px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Pemesanan Travel IBIK Abadi</h2>
+    <form id="formTravel" onsubmit="hitungTiket(event)">
+        <div class="row"><label>Nama Pemesan :</label> <input type="text" id="nama" required></div>
+        
+        <div class="row">
+            <label>Tujuan :</label>
+            <select id="tujuan">
+                <option value="Jakarta">Jakarta</option>
+                <option value="Solo">Solo</option>
+                <option value="Surabaya">Surabaya</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label>Kelas :</label>
+            <select id="kelas">
+                <option value="Eksekutif">Eksekutif</option>
+                <option value="Bisnis">Bisnis</option>
+                <option value="Ekonomi">Ekonomi</option>
+            </select>
+        </div>
+
+        <div class="row"><label>Banyak Tiket :</label> <input type="number" id="jumlah" required></div>
+        
+        <div class="row">
+            <label>Status Member :</label>
+            <input type="radio" name="member" value="Ya" required> Ya (Diskon 10%)
+            <input type="radio" name="member" value="Tidak"> Bukan
+        </div>
+        
+        <button type="submit">KIRIM</button>
+        <button type="reset">ULANG</button>
+    </form>
+
+    <hr>
+    <h3>Output Pembayaran :</h3>
+    <div id="outputArea"></div>
+</div>
+
+<script>
+    function hitungTiket(event) {
+        event.preventDefault();
+
+        // Data Harga (Tabel)
+        const hargaTabel = {
+            "Jakarta": {"Eksekutif": 70000, "Bisnis": 40000, "Ekonomi": 10000},
+            "Solo": {"Eksekutif": 80000, "Bisnis": 50000, "Ekonomi": 20000},
+            "Surabaya": {"Eksekutif": 90000, "Bisnis": 60000, "Ekonomi": 30000}
+        };
+
+        // Ambil Input
+        const tujuan = document.getElementById('tujuan').value;
+        const kelas = document.getElementById('kelas').value;
+        const jumlah = parseInt(document.getElementById('jumlah').value);
+        const isMember = document.querySelector('input[name="member"]:checked').value === "Ya";
+
+        // Hitung
+        const hargaSatuan = hargaTabel[tujuan][kelas];
+        const subtotal = hargaSatuan * jumlah;
+        const diskon = isMember ? (subtotal * 0.1) : 0;
+        const totalBayar = subtotal - diskon;
+
+        // Tampilkan Output
+        document.getElementById('outputArea').innerHTML = `
+            <p>Harga Tiket : Rp ${hargaSatuan.toLocaleString()}</p>
+            <p>Subtotal : Rp ${subtotal.toLocaleString()}</p>
+            <p>Diskon : Rp ${diskon.toLocaleString()}</p>
+            <p><strong>Total Bayar : Rp ${totalBayar.toLocaleString()}</strong></p>
+        `;
+    }
+</script>
+
+</body>
+</html>

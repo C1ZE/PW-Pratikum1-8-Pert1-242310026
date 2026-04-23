@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Perhitungan Faktorial dan Deret</title>
+    <style>
+        table { border-collapse: collapse; width: 400px; font-family: sans-serif; }
+        th, td { border: 1px solid #000; padding: 5px; }
+        .header-title { font-weight: bold; text-align: center; background-color: #eee; }
+    </style>
+</head>
+<body>
+
+<form id="formHitung" onsubmit="hitung(event)">
+    <table>
+        <tr>
+            <th colspan="2" class="header-title">PERHITUNGAN FAKTORIAL dan DERET</th>
+        </tr>
+        <tr>
+            <td>N</td>
+            <td><input type="number" id="inputN" required></td>
+        </tr>
+        <tr>
+            <td>Faktorial</td>
+            <td><input type="text" id="hasilFaktorial" readonly></td>
+            <td rowspan="2">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Jumlah</td>
+            <td><input type="text" id="hasilJumlah" readonly></td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    function hitung(event) {
+        event.preventDefault();
+        
+        let n = parseInt(document.getElementById('inputN').value);
+        let faktorial = 1;
+        let jumlah = 0;
+
+        // Logika Perhitungan
+        for (let i = 1; i <= n; i++) {
+            faktorial *= i; // Menghitung N!
+            jumlah += i;    // Menghitung deret 1+2+...+N
+        }
+
+        // Output ke Form
+        document.getElementById('hasilFaktorial').value = faktorial;
+        document.getElementById('hasilJumlah').value = jumlah;
+    }
+</script>
+
+</body>
+</html>

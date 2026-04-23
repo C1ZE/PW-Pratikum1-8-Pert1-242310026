@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Perhitungan Saldo Bunga Majemuk</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .container { border: 1px solid #000; padding: 20px; width: 350px; }
+        .row { margin-bottom: 10px; }
+        label { display: inline-block; width: 80px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Perhitungan Saldo</h2>
+    <form id="formSaldo" onsubmit="hitungSaldo(event)">
+        <div class="row"><label>Saldo :</label> <input type="number" id="inputSaldo" value="100000" required></div>
+        <div class="row"><label>Bunga (%) :</label> <input type="number" id="inputBunga" value="10" required></div>
+        <div class="row"><label>Waktu :</label> <input type="number" id="inputWaktu" value="3" required></div>
+        
+        <button type="submit">Hitung</button>
+        <button type="reset" onclick="resetOutput()">Reset</button>
+    </form>
+
+    <hr>
+    <div id="outputArea"></div>
+</div>
+
+<script>
+    function hitungSaldo(event) {
+        event.preventDefault();
+        
+        let saldo = parseFloat(document.getElementById('inputSaldo').value);
+        let bunga = parseFloat(document.getElementById('inputBunga').value) / 100;
+        let waktu = parseInt(document.getElementById('inputWaktu').value);
+        let hasilHTML = "<h3>Hasil Perhitungan :</h3>";
+
+        // Perulangan untuk menghitung saldo per bulan
+        for (let i = 1; i <= waktu; i++) {
+            saldo += (saldo * bunga); // Saldo ditambah bunga
+            hasilHTML += `<p>Saldo Bulan ${i} = Rp. ${saldo.toLocaleString('id-ID')}</p>`;
+        }
+
+        document.getElementById('outputArea').innerHTML = hasilHTML;
+    }
+
+    function resetOutput() {
+        document.getElementById('outputArea').innerHTML = "";
+    }
+</script>
+
+</body>
+</html>
