@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith Bites | Future Food</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Component: Navbar -->
+    <nav class="navbar">
+        <div class="logo">ZENITH<span>BITES</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#tech">Tech</a></li>
+            <li><button class="btn-order">Order Now</button></li>
+        </ul>
+    </nav>
+
+    <!-- 2. Component: Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>The Future of <br><span>Fine Dining</span></h1>
+            <p>Kuliner organik masa depan dengan presisi teknologi robotik.</p>
+            <a href="#menu" class="btn-main">Explore Menu</a>
+        </div>
+    </header>
+
+    <!-- 3. Component: Features -->
+    <section id="tech" class="features">
+        <div class="container grid">
+            <div class="card">
+                <h3>Smart Kitchen</h3>
+                <p>Otomasi penuh untuk rasa yang konsisten sempurna.</p>
+            </div>
+            <div class="card">
+                <h3>Eco-Packaging</h3>
+                <p>100% ramah lingkungan tanpa plastik sekali pakai.</p>
+            </div>
+            <div class="card">
+                <h3>Drone Delivery</h3>
+                <p>Pengantaran super cepat dalam radius 5km.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Component: Menu List -->
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Chef's Recommendations</h2>
+        <div class="container grid">
+            <div class="menu-card">
+                <span class="emoji">🍜</span>
+                <h4>Cyber Ramen</h4>
+                <p>Rp 85.000</p>
+                <button onclick="addToCart('Cyber Ramen')">Pesan</button>
+            </div>
+            <div class="menu-card">
+                <span class="emoji">🍣</span>
+                <h4>Neon Sushi</h4>
+                <p>Rp 120.000</p>
+                <button onclick="addToCart('Neon Sushi')">Pesan</button>
+            </div>
+            <div class="menu-card">
+                <span class="emoji">🍔</span>
+                <h4>Quantum Burger</h4>
+                <p>Rp 95.000</p>
+                <button onclick="addToCart('Quantum Burger')">Pesan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Component: Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Zenith Bites. Created for Web Programming Quiz1.</p>
+        <div class="socials">Instagram • Facebook • TikTok</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
