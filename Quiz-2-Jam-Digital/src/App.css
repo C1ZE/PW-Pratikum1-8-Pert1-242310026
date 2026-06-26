@@ -1,0 +1,118 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container Utama dengan Efek Transisi Warna */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  padding: 20px;
+}
+
+/* Tema Light (Cerah) */
+.light-theme {
+  background: linear-gradient(135deg, #e0eacc 0%, #fcf7e1 100%);
+  color: #2c3e50;
+}
+
+/* Tema Dark (Gelap) */
+.dark-theme {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+}
+
+/* Card Jam Utama (Glassmorphism Effect) */
+.clock-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+  transition: transform 0.3s ease;
+}
+
+.light-theme .clock-card {
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+}
+
+.app-title {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.divider {
+  margin: 20px auto;
+  width: 60%;
+  border: 0;
+  height: 1px;
+  background: rgba(128, 128, 128, 0.3);
+}
+
+/* Tampilan Komponen Clock */
+.clock-date {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  opacity: 0.7;
+}
+
+.clock-time {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 25px;
+}
+
+/* Tampilan Komponen Toggle */
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.mode-status {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.toggle-btn {
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-btn.light {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+.toggle-btn.dark {
+  background-color: #ffffff;
+  color: #0f172a;
+}
