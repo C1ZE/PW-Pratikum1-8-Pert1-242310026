@@ -20,6 +20,17 @@ export default function CMSDashboard() {
             </div>
           </Link>
         </div>
+        <div className="col-md-4">
+          <Link href="/cms/users" className="text-decoration-none">
+            <div className="card h-100 shadow-sm">
+              <div className="card-body text-center py-5">
+                <i className="bi bi-people fs-1 text-info"></i>
+                <h5 className="fw-bold mt-3 mb-0">Users Management</h5>
+                <p className="text-muted small mb-0">Kelola data user</p>
+              </div>
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );

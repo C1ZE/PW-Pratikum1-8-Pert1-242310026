@@ -43,4 +43,26 @@ export const ListBooks = [
         rating: 3.7,
         views: 300
     },
+    {
+        id: 5,
+        title: "1984",
+        img: "nineteeneightyfour.jpg",
+        author: "George Orwell",
+        is_free: true,
+        language: "English",
+        sinopsis: "A dystopian novel about a totalitarian regime that watches its citizens' every move.",
+        rating: 4.8,
+        views: 1500
+    },
+    {
+        id: 6,
+        title: "The Hobbit",
+        img: "thehobbit.jpg",
+        author: "J.R.R. Tolkien",
+        is_free: false,
+        language: "English",
+        sinopsis: "A reluctant hobbit sets out on an unexpected journey to help reclaim a treasure guarded by a dragon.",
+        rating: 4.6,
+        views: 800
+    },
 ]

@@ -3,25 +3,31 @@ import React, { useMemo, useState } from "react";
 import { Cards } from "@/components/ui/cards";
 import { Button } from "@/components/ui/button";
 import { openModal } from "@/components/ui/modals";
+import { DELETE_BOOK } from "@/components/apis/BookServices";
 import Form from "./form";
 import {
   HeaderDatatables,
   SearchInput,
   PaginationComponent,
 } from "@/components/ui/datatables";
-export default function Tabledata({ data }) {
+export default function Tabledata({ data, ReloadData }) {
   const [search, setSearch] = useState("");
   const [sorting, setSorting] = useState({ field: "", order: "" });
   const [totalitems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 10;
   const handleEdit = (book) => {
-    openModal({ message: <Form book_id={book.id} />, size: "xl" });
+    openModal({ message: <Form book_id={book.id} ReloadBook={ReloadData} />, size: "xl" });
   };
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const confirmed = window.confirm("Hapus buku ini dari daftar?");
     if (confirmed) {
-      alert(`Demo only - penghapusan buku id ${id} belum terhubung ke API`);
+      const result = await DELETE_BOOK(id);
+      if (result.success) {
+        ReloadData();
+      } else {
+        alert(result.message || "Gagal menghapus buku");
+      }
     }
   };
   const table_headers = [

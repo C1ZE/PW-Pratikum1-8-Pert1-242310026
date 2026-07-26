@@ -4,9 +4,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu_CMS } from '@/const/menu_cms';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { user, logout } = useAuth();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const toggleSidebar = () => {
@@ -59,6 +61,37 @@ export default function Sidebar() {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="account-user">
+        {isExpanded ? (
+          <>
+            <div className="user-info">
+              <div className="user-avatar">
+                <i className="bi bi-person-circle"></i>
+              </div>
+              <div className="user-details">
+                <p className="user-name">{user?.username || 'User'}</p>
+                <p className="user-email">{user?.email || 'user@example.com'}</p>
+              </div>
+            </div>
+            <button
+              className="logout-btn"
+              onClick={logout}
+              title="Sign Out"
+            >
+              <i className="bi bi-box-arrow-right"></i>
+              <span className="menu-text">Sign Out</span>
+            </button>
+          </>
+        ) : (
+          <button
+            className="logout-btn-icon"
+            onClick={logout}
+            title="Sign Out"
+          >
+            <i className="bi bi-box-arrow-right"></i>
+          </button>
+        )}
       </div>
     </aside>
   );

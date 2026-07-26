@@ -1,3 +1,6 @@
+"use client";
+import { useState } from "react";
+
 const ALLOWED_PATTERN = /^[a-zA-Z0-9\s.,!?@#$%&*()\-_+=:;"'<>\/\[\]{}|\\~`]*$/;
 const validateInput = (value) => {
   return ALLOWED_PATTERN.test(value);
@@ -87,11 +90,36 @@ const InputImage = ({ title, imagePreview, required, ...props }) => {
     </div>
   );
 };
+const TextInputPassword = ({ title, required, ...props }) => {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="form-group mb-3">
+      {title && <LableTitle title={title} required={required} />}
+      <div className="input-group">
+        <input
+          type={show ? "text" : "password"}
+          required={required}
+          className="form-control"
+          {...props}
+        />
+        <button
+          type="button"
+          className="btn btn-outline-secondary"
+          onClick={() => setShow(!show)}
+          tabIndex={-1}
+        >
+          <i className={`bi ${show ? "bi-eye-slash" : "bi-eye"}`}></i>
+        </button>
+      </div>
+    </div>
+  );
+};
 export {
   validateInput,
   sanitizeInput,
   TextInput,
   TextAreaInput,
+  TextInputPassword,
   InputCheckbox,
   InputImage,
 };

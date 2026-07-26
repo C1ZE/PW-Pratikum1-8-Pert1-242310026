@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextAreaInput, TextInput, InputImage, InputCheckbox } from '@/components/ui/forms'
 import { Button } from "@/components/ui/button";
+import { openModal, ModalResponse } from '@/components/ui/modals';
+import { GET_BOOK_BY_ID, CREATE_BOOK, UPDATE_BOOK } from '@/components/apis/BookServices';
 import { Alert } from '@/components/ui/alert';
 
 export default function Form({ book_id, ReloadBook }) {
@@ -16,7 +18,27 @@ export default function Form({ book_id, ReloadBook }) {
   }
   const [formData, setFormData] = useState(obj_book)
   const [imagePreview, setImagePreview] = useState(null)
-  const [error, setError] = useState("Demo form only - not connected to API");
+  const [error, setError] = useState("");
+
+  const ReloadBookByID = async () => {
+    const result = await GET_BOOK_BY_ID(book_id);
+    if (result.data && Object.values(result.data).length > 0) {
+      setFormData(result.data);
+      if (result.data.image) {
+        const imageUrl = `${process.env.NEXT_PUBLIC_BACKEND_URI}${result.data.image}`;
+        setImagePreview(imageUrl);
+      }
+    } else {
+      openModal({ message: <ModalResponse message={result.message} title="No record found" /> })
+      setFormData(obj_book)
+    }
+  }
+
+  useEffect(() => {
+    if (book_id) {
+      ReloadBookByID();
+    }
+  }, [book_id])
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -53,13 +75,48 @@ export default function Form({ book_id, ReloadBook }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError("Demo form only - no save action is connected")
+    try {
+      const formDataToSend = new FormData()
+
+      formDataToSend.append('title', formData.title)
+      formDataToSend.append('author', formData.author)
+      formDataToSend.append('sinopsis', formData.sinopsis)
+      formDataToSend.append('story', formData.story)
+      formDataToSend.append('is_free', formData.is_free)
+      if (formData.image instanceof File) {
+        formDataToSend.append('coverImage', formData.image)
+      }
+      if (book_id) {
+        formDataToSend.append('id', book_id)
+        const result = await UPDATE_BOOK(book_id, formDataToSend)
+        if (result.success) {
+          openModal({ message: <ModalResponse message="Book has been successfully updated!" title="Success" /> })
+          ReloadBook();
+          setFormData(obj_book)
+          setImagePreview(null)
+        } else {
+          setError(result.message || 'Failed to update book')
+        }
+      } else {
+        const result = await CREATE_BOOK(formDataToSend)
+        if (result.success) {
+          openModal({ message: <ModalResponse message="Book has been successfully created!" title="Success" /> })
+          ReloadBook();
+          setFormData(obj_book)
+          setImagePreview(null)
+        } else {
+          setError(result.message || 'Failed to create book')
+        }
+      }
+    } catch (error) {
+      setError(error.message)
+    }
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <h3 className='d-flex align-items-start flex-column'>
-        <span className="">{book_id ? "Edit Book" : "Add New Book"}</span>
+        <span>{book_id ? "Edit Book" : "Add New Book"}</span>
         <span className="text-secondary fs-6">Fill in the details for the book.</span>
       </h3>
 
@@ -110,7 +167,6 @@ export default function Form({ book_id, ReloadBook }) {
                 value="Is Free"
                 name="is_free"
                 is_switch={true}
-                required={true}
                 checked={formData.is_free}
                 onChange={handleInputChange}
               />
@@ -120,22 +176,16 @@ export default function Form({ book_id, ReloadBook }) {
           <InputImage
             title="Cover Image"
             onChange={handleImageChange}
-            required
             imagePreview={imagePreview}
           />
         </div>
       </div>
 
       <div className="mt-4 text-center">
-        <Button type="button" variant="light" className="me-2 btn-lg" onClick={() => {
-          setFormData(obj_book)
-          setImagePreview(null)
-          setError("Demo form only - not connected to API")
-          if (ReloadBook) ReloadBook()
-        }}>
+        <Button type="button" variant="light" className="me-2 btn-lg" onClick={() => openModal({ open: false })}>
           Cancel
         </Button>
-        <Button type="button" variant="primary" className="btn-lg" onClick={handleSubmit}>
+        <Button type="submit" variant="primary" className="btn-lg">
           Submit Book
         </Button>
       </div>

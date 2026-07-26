@@ -115,5 +115,14 @@ const openModal = ({
       : undefined,
   });
 };
+const ModalResponse = ({ title, message }) => {
+  return (
+    <div className="text-center py-3">
+      <i className="bi bi-check-circle-fill text-success" style={{ fontSize: "3rem" }}></i>
+      <h4 className="mt-3">{title}</h4>
+      <p className="text-muted mb-0">{message}</p>
+    </div>
+  );
+};
 export default Modals;
-export { openModal };
+export { openModal, ModalResponse };
